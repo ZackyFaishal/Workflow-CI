@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/KULIAH/LASKAR AI/Membangun Machine Learning/MLOps/Workflow-CI/MLProject/mlruns/478990849018057280/4f4d4675ccf441a7a9a73b507c7d84ab/artifacts
+end_time: 1767078770881
+entry_point_name: ''
+experiment_id: '478990849018057280'
+lifecycle_stage: active
+run_id: 4f4d4675ccf441a7a9a73b507c7d84ab
+run_name: GradientBoosting_CI
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767078769949
+status: 3
+tags: []
+user_id: faish

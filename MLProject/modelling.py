@@ -71,12 +71,15 @@ def main(args):
         # =========================
         # Save model
         # =========================
-        os.makedirs(os.path.dirname(args.model_output), exist_ok=True)
+        output_dir = os.path.dirname(args.model_output)
+        os.makedirs(output_dir, exist_ok=True)
         joblib.dump(model, args.model_output)
         mlflow.log_artifact(args.model_output, artifact_path="model")
 
         print("✅ Training selesai")
         print("📦 Model disimpan di:", args.model_output)
+        print("📂 Absolute path:", os.path.abspath(args.model_output))
+        print("📁 Isi folder output:", os.listdir(output_dir))
 
 
 if __name__ == "__main__":
