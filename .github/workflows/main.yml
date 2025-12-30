@@ -55,13 +55,6 @@ jobs:
           ls -la MLProject
 
       # =========================
-      # 🔥 FIX UTAMA: Buat folder output
-      # =========================
-      - name: Prepare output directory
-        run: |
-          mkdir -p MLProject/models
-
-      # =========================
       # Run MLflow Project
       # =========================
       - name: Train model with MLflow Project
