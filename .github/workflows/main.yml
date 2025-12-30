@@ -16,6 +16,8 @@ env:
   MODEL_OUTPUT: models/personality_model.joblib
   TEST_SIZE: "0.2"
   RANDOM_STATE: "42"
+  MLFLOW_EXPERIMENT_NAME: personality-ci-training
+
 
 jobs:
   train-model:
@@ -75,3 +77,6 @@ jobs:
         with:
           name: trained-personality-model
           path: MLProject/${{ env.MODEL_OUTPUT }}
+
+      
+      
