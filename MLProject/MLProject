@@ -1,0 +1,25 @@
+name: personality-classification-ci
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      data_path:
+        type: path
+        description: personality_preprocessing_dataset.csv
+      model_output:
+        type: path
+        default: models/personality_model.joblib
+      test_size:
+        type: float
+        default: 0.2
+      random_state:
+        type: int
+        default: 42
+    command: >
+      python modelling.py
+      --data_path {data_path}
+      --model_output {model_output}
+      --test_size {test_size}
+      --random_state {random_state}
