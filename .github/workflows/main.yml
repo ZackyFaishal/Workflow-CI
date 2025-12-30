@@ -45,12 +45,21 @@ jobs:
           pip install mlflow pandas scikit-learn joblib
 
       # =========================
-      # Sanity check (opsional tapi direkomendasikan)
+      # Sanity check (struktur repo)
       # =========================
       - name: Check MLProject structure
         run: |
+          echo "Root directory:"
           ls -la
+          echo "MLProject directory:"
           ls -la MLProject
+
+      # =========================
+      # 🔥 FIX UTAMA: Buat folder output
+      # =========================
+      - name: Prepare output directory
+        run: |
+          mkdir -p MLProject/models
 
       # =========================
       # Run MLflow Project
