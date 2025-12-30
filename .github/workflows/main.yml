@@ -1,0 +1,64 @@
+name: CI MLflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  DATA_PATH: personality_preprocessing_dataset.csv
+  MODEL_OUTPUT: models/personality_model.joblib
+  TEST_SIZE: 0.2
+  RANDOM_STATE: 42
+
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+
+    steps:
+      # =========================
+      # Checkout repository
+      # =========================
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # =========================
+      # Setup Python
+      # =========================
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      # =========================
+      # Install dependencies
+      # =========================
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mlflow pandas scikit-learn joblib
+
+      # =========================
+      # Run MLflow Project
+      # =========================
+      - name: Train model with MLflow Project
+        run: |
+          cd MLProject
+          mlflow run . \
+            -P data_path=${{ env.DATA_PATH }} \
+            -P model_output=${{ env.MODEL_OUTPUT }} \
+            -P test_size=${{ env.TEST_SIZE }} \
+            -P random_state=${{ env.RANDOM_STATE }} \
+            --env-manager=local
+
+      # =========================
+      # Upload model artifact
+      # =========================
+      - name: Upload trained model artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: trained-personality-model
+          path: MLProject/${{ env.MODEL_OUTPUT }}
