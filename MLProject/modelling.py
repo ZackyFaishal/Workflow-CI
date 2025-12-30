@@ -3,7 +3,6 @@ import os
 import pandas as pd
 import joblib
 import mlflow
-import mlflow.sklearn
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier
@@ -11,13 +10,6 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 
 
 def main(args):
-    # =========================
-    # Setup MLflow (local)
-    # =========================
-    os.makedirs("mlruns", exist_ok=True)
-    mlflow.set_tracking_uri("file:./mlruns")
-    mlflow.set_experiment("personality-ci-training")
-
     # =========================
     # Load dataset
     # =========================
