@@ -58,7 +58,7 @@ jobs:
       # Upload model artifact
       # =========================
       - name: Upload trained model artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: trained-personality-model
           path: MLProject/${{ env.MODEL_OUTPUT }}
