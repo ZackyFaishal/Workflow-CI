@@ -17,6 +17,7 @@ entry_points:
       random_state:
         type: int
         default: 42
+        
     command: >
       python modelling.py
       --data_path {data_path}
